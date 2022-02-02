@@ -32907,7 +32907,7 @@ async function run() {
         pull_number: contextPullRequest.number,
         title: newTitle,
       });
-      core.info(`Successfully added an emoji to the title!: "${newTitle}"`);
+      core.info(`Successfully added the Jira ticket to the title!: "${newTitle}"`);
     
   } catch (error) {
     core.setFailed(error.message);
