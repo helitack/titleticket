@@ -1,0 +1,26 @@
+{
+  "name": "titleticket",
+  "version": "1.0.0",
+  "description": "titleticket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helitack/titleticket.git"
+  },
+  "keywords": [],
+  "author": "Crispin Hoggarth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/helitack/titleticket/issues"
+  },
+  "homepage": "https://github.com/helitack/titleticket#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "conventional-changelog-conventionalcommits": "4.5.0",
+    "conventional-commits-parser": "^3.2.0"
+  }
+}

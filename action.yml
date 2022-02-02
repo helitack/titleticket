@@ -1,0 +1,5 @@
+name: 'PR Title Jira Ticket From Branch'
+description: 'Add jira ticket from the branch name to your PR titles'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
