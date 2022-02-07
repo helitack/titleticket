@@ -32875,14 +32875,21 @@ async function run() {
 
     const originalTitle = pullRequest.title;
     const branchName = pullRequest.head.ref;
-    const jiraTicketNumber = branchName.match(/\/[A-Z]{2,}-\d+/);
+    const branchJiraTicketNumber = branchName.match(/\/[A-Z]{2,}-\d+/);
 
-    if (!jiraTicketNumber || jiraTicketNumber.length !== 1 || !jiraTicketNumber[0]) {
+    const existingTitleJiraTicketNumber = originalTitle.match(/\[[A-Z]{2,}-\d+\]/);
+
+    if (existingTitleJiraTicketNumber && existingTitleJiraTicketNumber.length > 0) {
+      core.info(`PR Title already has a ticket number in it: "${existingTitleJiraTicketNumber[0]}". Looks like you know what you're doing. I won't change it.`);
+      return;
+    }
+
+    if (!branchJiraTicketNumber || branchJiraTicketNumber.length !== 1 || !branchJiraTicketNumber[0]) {
       core.info(`No Jira ticket pattern found in branch: "${branchName}"`);
       return;
     }
 
-    const jiraTicketString = `[${jiraTicketNumber[0].replace(/\//g, '')}]`;
+    const jiraTicketString = `[${branchJiraTicketNumber[0].replace(/\//g, '')}]`;
 
     if (originalTitle.includes(jiraTicketString)) {
       core.info(`Title already includes the Jira ticket: "${jiraTicketString}"`);
